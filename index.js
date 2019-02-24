@@ -50,12 +50,12 @@ function start() {
     }
     var logoUrl = process.env.LOGO_URL;
     // Default title
-    var metaTitle = 'Sessions for ' + unconfName;
+    var metaTitle = 'Sessions für ' + unconfName;
 
     // Routes
     app.get('/', function (req, res) {
         spreadsheet.getCachedSessions( function(sessions, error) {
-            metaTitle = 'Sessions for ' + unconfName;
+            metaTitle = 'Sessions für ' + unconfName;
             res.render('session_listing', { sessions, error, unconfName, logoUrl, metaTitle })
         }); 
     });
@@ -69,12 +69,19 @@ function start() {
     app.get('/sessions/:sessionID', function (req, res) {
         spreadsheet.getCachedSession(req.params.sessionID, function(session, error) {
             if(session == null) {
-                res.status(404).send("That session can't be found. Head back to the <a href='/'>listing page</a> and try again.");
+                res.status(404).send("Diese Session wurde nicht gefunden. Geh zurück <a href='/'>zur Liste</a> und versuch eine andere.");
                 return;
             }
             metaTitle = session.title + ' at ' + unconfName;
             res.render('full_session', { session, error, unconfName, metaTitle, logoUrl })
         }); 
+    });
+    
+    app.get('/proposals', function (req, res) {
+      spreadsheet.getCachedSessions( function(sessions, error) {
+        metaTitle = 'Proposals für ' + unconfName;
+        res.render('proposals', { sessions, error, unconfName, logoUrl, metaTitle })
+      }); 
     });
     
     app.get('/sessions.json', cache(cacheTimeout), function (req, res, error) {

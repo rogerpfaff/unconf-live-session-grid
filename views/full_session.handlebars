@@ -15,14 +15,14 @@ Back to session listing
 {{/if}}
 {{#if session.time}}
 <div class="full-session__key-info">
-    <strong>Time:</strong>
+    <strong>Uhrzeit:</strong>
     {{ session.time }}
-    <strong>| Room:</strong>
+    <strong>| Raum:</strong>
     {{ session.room }}
 </div>
 {{/if}}
 <p>
-<strong>Led by:</strong>
+<strong>Wer:</strong>
 {{#if session.leader1 }}
 <a target="_blank" href="https://twitter.com/{{ session.leader1 }}">
 {{ session.leader1 ~}}
@@ -47,8 +47,8 @@ Back to session listing
 
 {{#if session.sessionnotes }}
 <p>
-<strong>Session notes:</strong>
-<a target="_blank" title="Session notes on Google Docs" href="http://{{ session.sessionnotes }}">{{ session.sessionnotes }}</a>
+<strong>Session Notizen:</strong>
+{{ session.sessionnotes }}
 </p>
 {{/if}}
 
