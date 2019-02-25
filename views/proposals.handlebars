@@ -1,0 +1,30 @@
+{{#if logoUrl}}
+<div class="mrs-ham" style="background-image: url( {{logoUrl}} );">
+{{/if}}
+<h1>Vorschläge für {{ unconfName }}</h1>
+{{#if logoUrl}}
+</div>
+{{/if}}
+{{#if error}}
+    <p>{{error}}</p>
+{{/if}}
+<main>
+{{#group sessions by="time"}}
+<section class="timeslot">
+    <div class="timeslot__sessions">
+        {{#each items}}
+            <article class="session">
+                <h3 class="session__title">{{title}}</h3>
+                <p>
+                {{ sessionnotes }}
+                </p>
+                <strong>Wer:</strong>
+                <a target="_blank" href="https://twitter.com/{{ this.leader1 }}">
+                    {{ this.leader1 }}
+                </a>
+            </article>
+        {{/each}}
+    </div>
+</section>
+{{/group}}
+</main>
