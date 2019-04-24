@@ -54,7 +54,7 @@ var getScrollPositions = function() {
     var sessionListingsElements = document.querySelectorAll('.timeslot__sessions');
     var scrollPositions = [];
     sessionListingsElements.forEach(function(currentValue, currentIndex, listObj) {
-        scrollPositions.push(element.listObj);
+        scrollPositions.push(currentValue);
     });
     // for(var element of sessionListingsElements) {
     //     scrollPositions.push(element.scrollLeft);
