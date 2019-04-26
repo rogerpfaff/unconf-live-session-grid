@@ -9,6 +9,7 @@
     <p>{{error}}</p>
 {{/if}}
 <main>
+{{#group sessions by="day"}}
 {{#group sessions by="time"}}
 <section class="timeslot">
 	<h2 class="timeslot__time" id="{{dashcase value}}">{{ value }}</h2>
@@ -26,5 +27,6 @@
         {{/each}}
     </div>
 </section>
+{{/group}}
 {{/group}}
 </main>
